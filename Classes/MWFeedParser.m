@@ -75,7 +75,8 @@
         [dateFormatterRFC822 setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         [dateFormatterRFC3339 setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		[en_US_POSIX release];
-		
+
+    [self reset];
 	}
 	return self;
 }
@@ -201,7 +202,12 @@
 // Begin XML parsing
 - (void)startParsingData:(NSData *)data textEncodingName:(NSString *)textEncodingName {
 	if (data && !feedParser) {
-		
+    parsing = YES;
+    aborted = NO;
+    stopped = NO;
+    failed = NO;
+    parsingComplete = NO;
+
 		// Create feed info
 		MWFeedInfo *i = [[MWFeedInfo alloc] init];
 		self.info = i;
