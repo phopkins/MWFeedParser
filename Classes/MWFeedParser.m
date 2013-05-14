@@ -463,9 +463,9 @@
 		
 		// End tag or close
 		if (ELEMENT_IS_EMPTY(elementName)) {
-			[currentText appendFormat:@" />", elementName];
+			[currentText appendFormat:@" />"];
 		} else {
-			[currentText appendFormat:@">", elementName];
+			[currentText appendFormat:@">"];
 		}
 		
 		// Dont continue
